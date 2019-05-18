@@ -161,11 +161,3 @@ class LinkedList:
             l2_node = l2_node.next
 
         return result
-
-
-#def main():
-#    pass
-
-
-#if __name__ == "__main__":
-#     main()
