@@ -50,7 +50,7 @@ class LinkedList:
 
     # return node from position 'pos'
     def get_at(self, pos):
-        if (pos < 0) or (pos >= self.length()):
+        if (pos < 0) or (pos >= self.len()):
             return None
 
         i = 0
@@ -101,8 +101,8 @@ class LinkedList:
     def remove_all_with_value(self, value):
         self.__remove_with_value(value, remove_first=False)
 
-    # clearing list
-    def clear(self):
+    # cleaning list
+    def clean(self):
         # Nullify head and tail pointers will be enough
         # Garbage collector will do the rest
         self.head = None
@@ -121,7 +121,7 @@ class LinkedList:
         return result
 
     # return length of list
-    def length(self):
+    def len(self):
         counter = 0
         node = self.head
 
@@ -132,7 +132,7 @@ class LinkedList:
         return counter
 
     # inserting "new_node" after "target_node"
-    def insert_after(self, new_node, target_node):
+    def insert(self, new_node, target_node):
         node = self.head
         while node is not None:
             if node == target_node:
@@ -147,7 +147,7 @@ class LinkedList:
     # l1 and l2 - LinkedLists
     @staticmethod
     def sum_lists(l1, l2):
-        if l1.length() != l2.length():
+        if l1.len() != l2.len():
             return None
 
         result = LinkedList()

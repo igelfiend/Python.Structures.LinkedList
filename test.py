@@ -69,17 +69,17 @@ class LinkedListTests(unittest.TestCase):
 
     # ---------------------------------------------------------------------------------------------
 
-    def test_clear_with_normal_list(self):
+    def test_clean_with_normal_list(self):
         test_list = prepare_list()
-        test_list.clear()
+        test_list.clean()
         self.assertEqual(test_list.to_values_list(), [],
-                         "Testing: 'clear'. List must be empty")
+                         "Testing: 'clean'. List must be empty")
 
-    def test_clear_with_empty_list(self):
+    def test_clean_with_empty_list(self):
         test_list = LinkedList()
-        test_list.clear()
+        test_list.clean()
         self.assertEqual(test_list.to_values_list(), [],
-                         "Testing: 'clear'. List must be empty")
+                         "Testing: 'clean'. List must be empty")
 
     # ---------------------------------------------------------------------------------------------
 
@@ -105,35 +105,35 @@ class LinkedListTests(unittest.TestCase):
 
     def test_length_normal_list(self):
         test_list = prepare_list()
-        result = test_list.length()
+        result = test_list.len()
         self.assertEqual(result, 12,
-                         "Testing: 'length'. Normal case")
+                         "Testing: 'len'. Normal case")
 
     def test_length_empty_list(self):
         test_list = LinkedList()
-        result = test_list.length()
+        result = test_list.len()
         self.assertEqual(result, 0,
-                         "Testing: 'length'. Empty list case")
+                         "Testing: 'len'. Empty list case")
 
     # ---------------------------------------------------------------------------------------------
 
-    def test_insert_after_standard_node(self):
+    def test_insert_standard_node(self):
         test_list = prepare_list()
-        test_list.insert_after(Node(36), test_list.get_at(1))
+        test_list.insert(Node(36), test_list.get_at(1))
         self.assertEqual(test_list.to_values_list(), [42, 33, 36, 11, 22, 15, 42, 10, 32, 42, 60, 70, 66],
-                         "Testing: 'insert_after'. Inserting node with a standard way")
+                         "Testing: 'insert'. Inserting node with a standard way")
 
-    def test_insert_after_last_node(self):
+    def test_insert_last_node(self):
         test_list = prepare_list()
-        test_list.insert_after(Node(36), test_list.get_at(11))
+        test_list.insert(Node(36), test_list.get_at(11))
         self.assertEqual(test_list.to_values_list(), [42, 33, 11, 22, 15, 42, 10, 32, 42, 60, 70, 66, 36],
-                         "Testing: 'insert_after'. Inserting node at last position")
+                         "Testing: 'insert'. Inserting node at last position")
 
-    def test_insert_after_node_not_in_list(self):
+    def test_insert_node_not_in_list(self):
         test_list = prepare_list()
-        test_list.insert_after(Node(36), Node(42))
+        test_list.insert(Node(36), Node(42))
         self.assertEqual(test_list.to_values_list(), [42, 33, 11, 22, 15, 42, 10, 32, 42, 60, 70, 66],
-                         "Testing: 'insert_after'. Inserting node after node not in list")
+                         "Testing: 'insert'. Inserting node after node not in list")
 
     # ---------------------------------------------------------------------------------------------
 
