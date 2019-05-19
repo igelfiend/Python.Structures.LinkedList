@@ -63,9 +63,9 @@ class LinkedList:
 
         return None
 
-    # removes node/nodes with value
-    # remove_first flag enables return on first-founded coincidence
-    def __remove_with_value(self, value, remove_first):
+    # Deletes element from list
+    # flag "all" enables deleting all value entries
+    def delete(self, value, all=False):
         node = self.head
         prev = None
 
@@ -77,7 +77,7 @@ class LinkedList:
                     self.head = node.next
 
                     # if remove only first entry, return
-                    if remove_first:
+                    if not all:
                         return
                 # if that node is a last, update tail pointer
                 else:
@@ -88,18 +88,10 @@ class LinkedList:
                     prev.next = node.next
 
                 # if remove only first entry, return
-                if remove_first:
+                if not all:
                     return
             prev = node
             node = node.next
-
-    # removes first-founded node with value="value"
-    def remove_with_value(self, value):
-        self.__remove_with_value(value, remove_first=True)
-
-    # removes all-founded nodes with value="value"
-    def remove_all_with_value(self, value):
-        self.__remove_with_value(value, remove_first=False)
 
     # cleaning list
     def clean(self):

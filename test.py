@@ -23,49 +23,55 @@ def prepare_list():
 
 
 class LinkedListTests(unittest.TestCase):
-    def test_remove_node_present_once(self):
+    def test_delete_node_present_once(self):
         test_list = prepare_list()
-        test_list.remove_with_value(11)
+        test_list.delete(11)
         self.assertEqual(test_list.to_values_list(), [42, 33, 22, 15, 42, 10, 32, 42, 60, 70, 66],
-                         "Testing: 'remove_with_value'. Value in list presents ones")
+                         "Testing: 'delete'. Value in list presents ones")
 
-    def test_remove_node_present_multiple(self):
+    def test_delete_node_present_multiple(self):
         test_list = prepare_list()
-        test_list.remove_with_value(42)
+        test_list.delete(42)
         self.assertEqual(test_list.to_values_list(), [33, 11, 22, 15, 42, 10, 32, 42, 60, 70, 66],
-                         "Testing: 'remove_with_value'. Value in list presents multiple times")
+                         "Testing: 'delete'. Value in list presents multiple times")
 
-    def test_remove_node_which_not_present(self):
+    def test_delete_node_which_not_present(self):
         test_list = prepare_list()
-        test_list.remove_with_value(99)
+        test_list.delete(99)
         self.assertEqual(test_list.to_values_list(), [42, 33, 11, 22, 15, 42, 10, 32, 42, 60, 70, 66],
-                         "Testing: 'remove_with_value'. Value in list not present")
+                         "Testing: 'delete'. Value in list not present")
 
-    def test_remove_node_at_last_position(self):
+    def test_delete_node_at_last_position(self):
         test_list = prepare_list()
-        test_list.remove_with_value(66)
+        test_list.delete(66)
         self.assertEqual(test_list.to_values_list(), [42, 33, 11, 22, 15, 42, 10, 32, 42, 60, 70],
-                         "Testing: 'remove_with_value'.Value in list placed in tail")
+                         "Testing: 'delete'.Value in list removed from tail")
+
+    def test_delete_node_at_head(self):
+        test_list = prepare_list()
+        test_list.delete(42)
+        self.assertEqual(test_list.to_values_list(), [33, 11, 22, 15, 42, 10, 32, 42, 60, 70, 66],
+                         "Testing: 'delete'. Value in list removed from head")
 
     # ---------------------------------------------------------------------------------------------
 
-    def test_remove_all_nodes_present_once(self):
+    def test_delete_all_nodes_present_once(self):
         test_list = prepare_list()
-        test_list.remove_all_with_value(15)
+        test_list.delete(15, all=True)
         self.assertEqual(test_list.to_values_list(), [42, 33, 11, 22, 42, 10, 32, 42, 60, 70, 66],
-                         "Testing: 'remove_all_with_value'. Value in list present once")
+                         "Testing: 'delete' with all entries. Value in list present once")
 
-    def test_remove_all_nodes_present_multiple(self):
+    def test_delete_all_nodes_present_multiple(self):
         test_list = prepare_list()
-        test_list.remove_all_with_value(42)
+        test_list.delete(42, all=True)
         self.assertEqual(test_list.to_values_list(), [33, 11, 22, 15, 10, 32, 60, 70, 66],
-                         "Testing: 'remove_all_with_value'. Value in list present multiple")
+                         "Testing: 'delete' with all entries. Value in list present multiple")
 
-    def test_remove_all_nodes_node_at_last_position(self):
+    def test_delete_all_nodes_node_at_last_position(self):
         test_list = prepare_list()
-        test_list.remove_all_with_value(66)
+        test_list.delete(66, all=True)
         self.assertEqual(test_list.to_values_list(), [42, 33, 11, 22, 15, 42, 10, 32, 42, 60, 70],
-                         "Testing: 'remove_all_with_value'. Value in list at last position")
+                         "Testing: 'delete' with all entries. Value deleted at last position")
 
     # ---------------------------------------------------------------------------------------------
 
@@ -147,7 +153,7 @@ class LinkedListTests(unittest.TestCase):
     def test_sum_lists_different_length(self):
         list1 = prepare_list()
         list2 = prepare_list()
-        list2.remove_with_value(33)
+        list2.delete(33)
         result = LinkedList.sum_lists(list1, list2)
         self.assertEqual(result, None,
                          "Testing: 'sum_lists'. Summarize two lists with different length")
