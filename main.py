@@ -109,7 +109,7 @@ class LinkedList:
         self.tail = None
 
     # return list of nodes with value="value"
-    def find_all_with_value(self, value):
+    def find_all(self, value):
         result = []
 
         node = self.head

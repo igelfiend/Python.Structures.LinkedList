@@ -83,23 +83,23 @@ class LinkedListTests(unittest.TestCase):
 
     # ---------------------------------------------------------------------------------------------
 
-    def test_find_all_with_value_one_value(self):
+    def test_find_all_one_value(self):
         test_list = prepare_list()
-        result = test_list.find_all_with_value(33)
+        result = test_list.find_all(33)
         self.assertEqual(result, [test_list.get_at(1)],
-                         "Testing: 'find_all_with_value'. Present one value")
+                         "Testing: 'find_all'. Present one value")
 
-    def test_find_all_with_value_multiple_values(self):
+    def test_find_all_multiple_values(self):
         test_list = prepare_list()
-        result = test_list.find_all_with_value(42)
+        result = test_list.find_all(42)
         self.assertEqual(result, [test_list.get_at(0), test_list.get_at(5), test_list.get_at(8)],
-                         "Testing: 'find_all_with_value'. Present multiple values")
+                         "Testing: 'find_all'. Present multiple values")
 
-    def test_find_all_with_value_value_not_presents(self):
+    def test_find_all_value_not_presents(self):
         test_list = prepare_list()
-        result = test_list.find_all_with_value(99)
+        result = test_list.find_all(99)
         self.assertEqual(result, [],
-                         "Testing: 'find_all_with_value'. Value not presents")
+                         "Testing: 'find_all'. Value not presents")
 
     # ---------------------------------------------------------------------------------------------
 
