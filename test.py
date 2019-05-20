@@ -73,6 +73,29 @@ class LinkedListTests(unittest.TestCase):
         self.assertEqual(test_list.to_values_list(), [42, 33, 11, 22, 15, 42, 10, 32, 42, 60, 70],
                          "Testing: 'delete' with all entries. Value deleted at last position")
 
+    def test_delete_all_nodes_comes_one_by_one_at_last_positions(self):
+        test_list = prepare_list()
+        test_list.add_in_tail(Node(66))
+        test_list.delete(66, all=True)
+        self.assertEqual(test_list.to_values_list(), [42, 33, 11, 22, 15, 42, 10, 32, 42, 60, 70],
+                         "Testing: 'delete' with all entries. Value deleted which comes one by one at last positions")
+
+    def test_delete_all_nodes_comes_one_by_one_at_first_positions(self):
+        test_list = prepare_list()
+        node = test_list.find(42)
+        test_list.insert(Node(42), node)
+        test_list.delete(42, all=True)
+        self.assertEqual(test_list.to_values_list(), [33, 11, 22, 15, 10, 32, 60, 70, 66],
+                         "Testing: 'delete' with all entries. Value deleted which comes one by one at last positions")
+
+    def test_delete_all_nodes_comes_one_by_one_at_center_positions(self):
+        test_list = prepare_list()
+        node = test_list.find(15)
+        test_list.insert(Node(15), node)
+        test_list.delete(15, all=True)
+        self.assertEqual(test_list.to_values_list(), [42, 33, 11, 22, 42, 10, 32, 42, 60, 70, 66],
+                         "Testing: 'delete' with all entries. Value deleted which comes one by one at last positions")
+
     # ---------------------------------------------------------------------------------------------
 
     def test_clean_with_normal_list(self):

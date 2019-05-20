@@ -90,7 +90,9 @@ class LinkedList:
                 # if remove only first entry, return
                 if not all:
                     return
-            prev = node
+            else:
+                prev = node
+
             node = node.next
 
     # cleaning list
