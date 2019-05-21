@@ -53,6 +53,27 @@ class LinkedListTests(unittest.TestCase):
         self.assertEqual(test_list.to_values_list(), [33, 11, 22, 15, 42, 10, 32, 42, 60, 70, 66],
                          "Testing: 'delete'. Value in list removed from head")
 
+    def test_delete_node_from_list_with_1_element(self):
+        test_list = LinkedList()
+        test_list.add_in_tail(Node(42))
+        test_list.delete(42)
+        self.assertEqual(test_list.to_values_list(), [],
+                         "Testing: 'delete'. Trying to remove from list with single element. Different arrays size")
+        self.assertIs(test_list.head, None,
+                      "Testing: 'delete'. Trying to remove from list with single element. Head pointer is not empty")
+        self.assertIs(test_list.tail, None,
+                      "Testing: 'delete'. Trying to remove from list with single element. Tail pointer is not empty")
+
+    def test_delete_node_from_empty_list(self):
+        test_list = LinkedList()
+        test_list.delete(12)
+        self.assertEqual(test_list.to_values_list(), [],
+                         "Testing: 'delete'. Trying to remove from empty list")
+        self.assertIs(test_list.head, None,
+                      "Testing: 'delete'. Trying to remove from empty list. Head pointer is not empty")
+        self.assertIs(test_list.tail, None,
+                      "Testing: 'delete'. Trying to remove from empty list. Tail pointer is not empty")
+
     # ---------------------------------------------------------------------------------------------
 
     def test_delete_all_nodes_present_once(self):

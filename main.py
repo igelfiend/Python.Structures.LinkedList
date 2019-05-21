@@ -72,18 +72,14 @@ class LinkedList:
         while node is not None:
             # when we found node
             if node.value == value:
+                # if that node is a last, update tail pointer
+                if node.next is None:
+                    self.tail = prev
+
                 # if that node is a first, update head pointer and return
                 if prev is None:
                     self.head = node.next
-
-                    # if remove only first entry, return
-                    if not all:
-                        return
-                # if that node is a last, update tail pointer
                 else:
-                    if node.next is None:
-                        self.tail = prev
-
                     # set previous node pointer on the next node
                     prev.next = node.next
 
