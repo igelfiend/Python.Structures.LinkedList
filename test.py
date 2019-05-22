@@ -23,6 +23,19 @@ def prepare_list():
 
 
 class LinkedListTests(unittest.TestCase):
+    def test_add_first_element(self):
+        test_list = LinkedList()
+        node = Node(42)
+        test_list.add_in_tail(node)
+        self.assertEqual(test_list.len(), 1,
+                         "Testing: 'add_it_tail'. Incorrect list size")
+        self.assertEqual(test_list.head, node,
+                         "Testing: 'add_it_tail'. Bad head pointer")
+        self.assertEqual(test_list.tail, node,
+                         "Testing: 'add_it_tail'. Bad tail pointer")
+
+    # ---------------------------------------------------------------------------------------------
+
     def test_delete_node_present_once(self):
         test_list = prepare_list()
         test_list.delete(11)
@@ -184,6 +197,12 @@ class LinkedListTests(unittest.TestCase):
         test_list.insert(Node(36), Node(42))
         self.assertEqual(test_list.to_values_list(), [42, 33, 11, 22, 15, 42, 10, 32, 42, 60, 70, 66],
                          "Testing: 'insert'. Inserting node after node not in list")
+
+    def test_insert_node_in_empty_list(self):
+        test_list = LinkedList()
+        test_list.insert(Node(42), None)
+        self.assertEqual(test_list.to_values_list(), [42],
+                         "Testing: 'insert'. Failed while inserting element in empty list after None element")
 
     # ---------------------------------------------------------------------------------------------
 

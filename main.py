@@ -123,6 +123,11 @@ class LinkedList:
 
     # inserting "new_node" after "target_node"
     def insert(self, new_node, target_node):
+        # Appending element in tail if there are empty list and target node is None
+        if self.len() == 0 and target_node is None:
+            self.add_in_tail(new_node)
+            return
+
         node = self.head
         while node is not None:
             if node == target_node:
