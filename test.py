@@ -182,13 +182,13 @@ class LinkedListTests(unittest.TestCase):
 
     def test_insert_standard_node(self):
         test_list = prepare_list()
-        test_list.insert(Node(36), test_list.get_at(1))
+        test_list.insert(test_list.get_at(1), Node(36))
         self.assertEqual(test_list.to_values_list(), [42, 33, 36, 11, 22, 15, 42, 10, 32, 42, 60, 70, 66],
                          "Testing: 'insert'. Inserting node with a standard way")
 
     def test_insert_last_node(self):
         test_list = prepare_list()
-        test_list.insert(Node(36), test_list.get_at(11))
+        test_list.insert(test_list.get_at(11), Node(36))
         self.assertEqual(test_list.to_values_list(), [42, 33, 11, 22, 15, 42, 10, 32, 42, 60, 70, 66, 36],
                          "Testing: 'insert'. Inserting node at last position")
 
@@ -201,7 +201,7 @@ class LinkedListTests(unittest.TestCase):
     def test_insert_node_in_empty_list(self):
         test_list = LinkedList()
         test_node = Node(42)
-        test_list.insert(test_node, None)
+        test_list.insert(None, test_node)
         self.assertEqual(test_list.to_values_list(), [42],
                          "Testing: 'insert'.\n"
                          "Failed while inserting element in empty list after None element.\n"

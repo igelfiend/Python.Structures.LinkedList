@@ -122,17 +122,17 @@ class LinkedList:
         return counter
 
     # inserting "new_node" after "target_node"
-    def insert(self, new_node, target_node):
+    def insert(self, afterNode, newNode):
         # Appending element in tail if there are empty list and target node is None
-        if self.len() == 0 and target_node is None:
-            self.add_in_tail(new_node)
+        if self.len() == 0 and afterNode is None:
+            self.add_in_tail(newNode)
             return
 
         node = self.head
         while node is not None:
-            if node == target_node:
-                new_node.next = node.next
-                node.next = new_node
+            if node == newNode:
+                newNode.next = node.next
+                node.next = newNode
 
                 return
 
