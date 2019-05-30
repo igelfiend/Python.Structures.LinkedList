@@ -200,9 +200,29 @@ class LinkedListTests(unittest.TestCase):
 
     def test_insert_node_in_empty_list(self):
         test_list = LinkedList()
-        test_list.insert(Node(42), None)
+        test_node = Node(42)
+        test_list.insert(test_node, None)
         self.assertEqual(test_list.to_values_list(), [42],
-                         "Testing: 'insert'. Failed while inserting element in empty list after None element")
+                         "Testing: 'insert'.\n"
+                         "Failed while inserting element in empty list after None element.\n"
+                         "Values error")
+        self.assertEqual(test_node, test_list.head,
+                         "Testing: 'insert'.\n"
+                         "Failed while inserting element in empty list after None element.\n"
+                         "Bad head pointer")
+        self.assertEqual(test_node, test_list.tail,
+                         "Testing: 'insert'.\n"
+                         "Failed while inserting element in empty list after None element.\n"
+                         "Bad tail pointer")
+
+    def test_insert_node_in_empty_list_incorrect_usage(self):
+        test_list = LinkedList()
+        test_node = Node(42)
+        test_list.insert(test_node, test_node)
+        self.assertEqual(test_list.to_values_list(), [],
+                         "Testing: 'insert'.\n"
+                         "Failed while inserting element in empty list after not None element.\n"
+                         "Values error")
 
     # ---------------------------------------------------------------------------------------------
 
