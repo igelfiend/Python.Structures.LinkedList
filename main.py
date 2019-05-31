@@ -130,7 +130,7 @@ class LinkedList:
 
         node = self.head
         while node is not None:
-            if node == newNode:
+            if node == afterNode:
                 newNode.next = node.next
                 node.next = newNode
 
