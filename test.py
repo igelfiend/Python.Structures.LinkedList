@@ -186,11 +186,20 @@ class LinkedListTests(unittest.TestCase):
         self.assertEqual(test_list.to_values_list(), [42, 33, 36, 11, 22, 15, 42, 10, 32, 42, 60, 70, 66],
                          "Testing: 'insert'. Inserting node with a standard way")
 
-    def test_insert_last_node(self):
+    def test_insert_node_after_first_element(self):
         test_list = prepare_list()
-        test_list.insert(test_list.get_at(11), Node(36))
+        test_list.insert(test_list.get_at(0), Node(36))
+        self.assertEqual(test_list.to_values_list(), [42, 36, 33, 11, 22, 15, 42, 10, 32, 42, 60, 70, 66],
+                         "Testing: 'insert'. Inserting node with a standard way")
+
+    def test_insert_node_after_last_element(self):
+        test_list = prepare_list()
+        test_node = Node(36)
+        test_list.insert(test_list.get_at(11), test_node)
         self.assertEqual(test_list.to_values_list(), [42, 33, 11, 22, 15, 42, 10, 32, 42, 60, 70, 66, 36],
                          "Testing: 'insert'. Inserting node at last position")
+        self.assertEqual(test_list.tail, test_node,
+                         "Testing: 'insert'. Tail pointer incorrect.")
 
     def test_insert_node_not_in_list(self):
         test_list = prepare_list()

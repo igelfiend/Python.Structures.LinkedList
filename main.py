@@ -134,6 +134,8 @@ class LinkedList:
                 newNode.next = node.next
                 node.next = newNode
 
+                if afterNode == self.tail:
+                    self.tail = newNode
                 return
 
             node = node.next
